@@ -1,73 +1,87 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# NestJS Microservice with Prisma
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a microservice built with NestJS and Prisma ORM, using SQLite as the database.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Prerequisites
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Node.js (v14 or later)
+- npm or yarn
 
 ## Installation
 
-```bash
-$ npm install
-```
+1. Clone the repository:
+   ```
+   git clone git@github.com:recypaid/products-ms.git
+   cd products-ms
+   ```
 
-## Running the app
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-```bash
-# development
-$ npm run start
+3. Set up the environment file:
+   - Copy the `.env.example` file to `.env`:
+     ```
+     cp .env.example .env
+     ```
+   - Open the `.env` file and update the variables as needed:
+     ```
+     DATABASE_URL="file:./dev.db"
+     JWT_SECRET="your-secret-key"
+     PORT=3000
+     ```
 
-# watch mode
-$ npm run start:dev
+## Database Setup
 
-# production mode
-$ npm run start:prod
-```
+1. SQLite database will be automatically created when you run the Prisma migrations:
+   ```
+   npx prisma migrate dev
+   ```
 
-## Test
+2. (Optional) To view and manage your database, you can use Prisma Studio:
+   ```
+   npx prisma studio
+   ```
 
-```bash
-# unit tests
-$ npm run test
+## Running the Application
 
-# e2e tests
-$ npm run test:e2e
+1. Start the application in development mode:
+   ```
+   npm run start:dev
+   ```
 
-# test coverage
-$ npm run test:cov
-```
+2. The service will be available at `http://localhost:3000` (or the port you specified in the `.env` file).
 
-## Support
+## API Documentation
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Once the application is running, you can access the Swagger API documentation at `http://localhost:3000/api`.
 
-## Stay in touch
+## Scripts
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- `npm run start`: Start the application in production mode
+- `npm run start:dev`: Start the application in development mode
+- `npm run test`: Run tests
+- `npm run prisma:studio`: Open Prisma Studio to manage your database
+
+## Environment Variables
+
+The following environment variables are required:
+
+- `DATABASE_URL`: The path to your SQLite database file (e.g., "file:./dev.db")
+- `JWT_SECRET`: Secret key for JWT token generation
+- `PORT`: The port on which the microservice will run
+
+Make sure these are properly set in your `.env` file before running the application.
+
+## Contributing
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the MIT License.
